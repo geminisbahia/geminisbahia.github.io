@@ -1,0 +1,14 @@
+{
+  "name": "Géminis",
+  "short_name": "Géminis",
+  "id": "./",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#ffffff",
+  "icons": [
+    { "src": "https://www.geminisbahia.com/wp-content/uploads/2021/04/cropped-RoundPhoto_Apr212021_090934-192x192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "https://www.geminisbahia.com/wp-content/uploads/2021/04/cropped-RoundPhoto_Apr212021_090934.png", "sizes": "512x512", "type": "image/png", "purpose": "any" }
+  ]
+}

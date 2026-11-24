@@ -1,0 +1,6 @@
+// Mínimo para que el celular la instale como aplicación. No guarda nada: todo viene del sistema en vivo.
+self.addEventListener("install", function () { self.skipWaiting(); });
+self.addEventListener("activate", function (e) { e.waitUntil(self.clients.claim()); });
+self.addEventListener("fetch", function (e) {
+  if (e.request.mode === "navigate") e.respondWith(fetch(e.request));
+});
