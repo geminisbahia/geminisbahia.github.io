@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Calculadora Géminis</title>
+<meta name="theme-color" content="#000000">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Calculadora">
+<style>
+  html, body { margin: 0; height: 100%; background: #000; }
+  iframe { position: fixed; inset: 0; width: 100%; height: 100%; border: 0; background: #0e1716; }
+  #cargando { position: fixed; inset: 0; display: grid; place-items: center; color: #fff; font: 16px system-ui, sans-serif; }
+  #cargando img { width: 96px; height: 96px; display: block; margin: 0 auto 14px; }
+</style>
+</head>
+<body>
+<div id="cargando"><div><img src="icono-192.png" alt="">Cargando la calculadora…</div></div>
+<!-- La calculadora vive en el sistema Géminis (Apps Script) y lee los precios de la planilla "Precios agente". -->
+<iframe id="calc" title="Calculadora de depilación Géminis"
+  src="https://script.google.com/macros/s/AKfycbzBlephutDAbGlkvLlNCHr2_6Gf5RehsZDL_EE6LBGO_tGrhQIKOniBlQ4SYk92UOz5KQ/exec/calculadora"
+  allow="clipboard-write"></iframe>
+<script>
+  document.getElementById('calc').addEventListener('load', function () { document.getElementById('cargando').remove(); });
+  if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js');
+</script>
+</body>
+</html>
