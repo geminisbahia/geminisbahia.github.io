@@ -10,21 +10,38 @@
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Calculadora">
+<script>
+// La calculadora vive en el sistema Géminis (Apps Script) y lee los precios de la planilla "Precios agente".
+// Abierta como aplicación instalada: va directo a la calculadora, en la misma ventana.
+var CALCULADORA = "https://script.google.com/macros/s/AKfycbzBlephutDAbGlkvLlNCHr2_6Gf5RehsZDL_EE6LBGO_tGrhQIKOniBlQ4SYk92UOz5KQ/exec/calculadora";
+if (matchMedia("(display-mode: standalone)").matches || matchMedia("(display-mode: fullscreen)").matches || navigator.standalone) location.replace(CALCULADORA);
+</script>
 <style>
-  html, body { margin: 0; height: 100%; background: #000; }
-  iframe { position: fixed; inset: 0; width: 100%; height: 100%; border: 0; background: #0e1716; }
-  #cargando { position: fixed; inset: 0; display: grid; place-items: center; color: #fff; font: 16px system-ui, sans-serif; }
-  #cargando img { width: 96px; height: 96px; display: block; margin: 0 auto 14px; }
+  html, body { margin: 0; min-height: 100%; background: #000; color: #fff; font: 17px/1.45 system-ui, -apple-system, "Segoe UI", sans-serif; }
+  main { max-width: 440px; margin: 0 auto; padding: 40px 22px; text-align: center; }
+  img { width: 120px; height: 120px; border-radius: 26px; }
+  h1 { font-size: 1.6rem; margin: 18px 0 6px; }
+  p { color: #c9d4d2; margin: 0 0 18px; }
+  a.btn { display: block; background: #2bb3a3; color: #fff; text-decoration: none; font-weight: 700; padding: 14px 18px; border-radius: 14px; margin: 22px 0; }
+  ol { text-align: left; color: #c9d4d2; padding-left: 22px; }
+  li { margin-bottom: 8px; }
+  b { color: #fff; }
 </style>
 </head>
 <body>
-<div id="cargando"><div><img src="icono-192.png" alt="">Cargando la calculadora…</div></div>
-<!-- La calculadora vive en el sistema Géminis (Apps Script) y lee los precios de la planilla "Precios agente". -->
-<iframe id="calc" title="Calculadora de depilación Géminis"
-  src="https://script.google.com/macros/s/AKfycbzBlephutDAbGlkvLlNCHr2_6Gf5RehsZDL_EE6LBGO_tGrhQIKOniBlQ4SYk92UOz5KQ/exec/calculadora"
-  allow="clipboard-write"></iframe>
+<main>
+  <img src="icono-192.png" alt="">
+  <h1>Calculadora Géminis</h1>
+  <p>Precios de depilación tomados de la planilla "Precios agente", los mismos que usa Mila.</p>
+  <a class="btn" href="https://script.google.com/macros/s/AKfycbzBlephutDAbGlkvLlNCHr2_6Gf5RehsZDL_EE6LBGO_tGrhQIKOniBlQ4SYk92UOz5KQ/exec/calculadora">Abrir la calculadora</a>
+  <p><b>Para dejarla como aplicación:</b></p>
+  <ol>
+    <li><b>Celular Android:</b> en Chrome, menú ⋮ → <b>Instalar aplicación</b> (o "Instalar y crear acceso directo") → <b>Instalar</b>.</li>
+    <li><b>iPhone:</b> en Safari, botón Compartir → <b>Agregar a inicio</b>.</li>
+    <li><b>Computadora:</b> en Chrome, menú ⋮ → Transmitir, guardar y compartir → <b>Instalar página como app</b>.</li>
+  </ol>
+</main>
 <script>
-  document.getElementById('calc').addEventListener('load', function () { document.getElementById('cargando').remove(); });
   if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js');
 </script>
 </body>
